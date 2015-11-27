@@ -1,6 +1,49 @@
 # Fusili - Simple network port scanner
 
-Fusili is a simple network port scanner. It is not a replacement for Nmap: it only performs TCP port scanning, and doesn't even try to be stealthy.
+*Fusili* is a simple network port scanner. It is not a replacement for Nmap: it only performs TCP port scanning, and doesn't even try to be stealthy.
+
+## Configuration
+
+The configuration file format is JSON:
+
+`hosts`: hosts to scan and their ports expected to be open. Example:
+
+```
+"hosts": {
+  "195.154.240.134": [ 22, 53 ],
+  "62.210.248.118": [ 22 ],
+  "62.210.248.119": [ ]
+}
+```
+
+`output`: scan report output destinations. Supported types:
+
+* `stdout`: output open ports found on the console.
+* `s3`: upload the report as JSON file to an Amazon S3 bucket. Settings:
+  * `access_key`
+  * `secret_key`
+  * `region`
+  * `bucket`
+  * `file_path`
+
+Example:
+
+```
+"output": {
+  "stdout": {
+    "type": "stdout"
+  },
+
+  "s3": {
+    "type": "s3",
+    "access_key": "XXXXXXXXXXXXXXXXXXXX",
+    "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "region": "eu-west",
+    "bucket": "monitoring",
+    "file_path": "portscan/report.json"
+  }
+}
+```
 
 ## Usage
 
