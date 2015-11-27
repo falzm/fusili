@@ -1,0 +1,20 @@
+{
+  "hosts": {
+    "195.154.240.134": [ 22, 53 ],
+    "62.210.248.118": [ 22 ],
+    "62.210.248.119": [ ]
+  },
+
+  "output": {
+    "stdout": { "type": "stdout" },
+
+    "s3": {
+      "type": "s3",
+      "access_key": "XXXXXXXXXXXXXXXXXXXX",
+      "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "region": "eu-west",
+      "bucket": "monitoring",
+      "file_path": "portscan/report.json"
+    }
+  }
+}
