@@ -13,23 +13,30 @@ import (
 )
 
 type PortScanner struct {
-	host          string
+	host          *net.IPAddr
 	expectedPorts []int
 	timeout       time.Duration
 }
 
 // NewPortScanner returns a new PortScanner instance with time out set to timeout.
-func NewPortScanner(host string, expectedPorts []int, timeout int) *PortScanner {
-	return &PortScanner{
-		host:          host,
+func NewPortScanner(host string, expectedPorts []int, timeout int) (*PortScanner, error) {
+	var err error
+
+	ps := &PortScanner{
 		expectedPorts: expectedPorts,
 		timeout:       time.Duration(timeout) * time.Second,
 	}
+
+	if ps.host, err = net.ResolveIPAddr("ip", host); err != nil {
+		return nil, err
+	}
+
+	return ps, nil
 }
 
 // IsOpen returns true if port on the host is open, false otherwise.
 func (ps *PortScanner) IsOpen(port string) bool {
-	conn, err := net.DialTimeout("tcp", net.JoinHostPort(ps.host, port), ps.timeout)
+	conn, err := net.DialTimeout("tcp", net.JoinHostPort(ps.host.String(), port), ps.timeout)
 	if err != nil {
 		if _, ok := err.(*net.OpError); ok {
 			netError := err.(*net.OpError)
@@ -39,23 +46,23 @@ func (ps *PortScanner) IsOpen(port string) bool {
 				syscallError := netError.Err.(*os.SyscallError)
 
 				if syscallError.Err == syscall.ECONNREFUSED {
-					logger.Debug("scan", "%s: port %s closed", ps.host, port)
+					logger.Debug("scan", "%s: port %s closed", ps.host.String(), port)
 					return false
 				}
 
 			case "*net.timeoutError":
-				logger.Debug("scan", "%s: port %s timed out (probably filtered by firewall)", ps.host, port)
+				logger.Debug("scan", "%s: port %s timed out (probably filtered by firewall)", ps.host.String(), port)
 				return false
 			}
 		}
 
-		logger.Error("scan", "%s: port %s: %s", ps.host, port, err)
+		logger.Error("scan", "%s: port %s: %s", ps.host.String(), port, err)
 		return false
 	}
 
 	defer conn.Close()
 
-	logger.Debug("scan", "%s: port %s open", ps.host, port)
+	logger.Debug("scan", "%s: port %s open", ps.host.String(), port)
 
 	return true
 }
@@ -78,7 +85,7 @@ func (ps *PortScanner) ScanRange(start, end int) []int {
 	for p := start; p <= end; p++ {
 		port := strconv.Itoa(p)
 
-		log.Printf("DEBUG: ScanRange: scanning %s:%s\n", ps.host, port)
+		log.Printf("DEBUG: ScanRange: scanning %s:%s\n", ps.host.String(), port)
 
 		if ps.IsOpen(port) {
 			open = append(open, p)
@@ -90,5 +97,5 @@ func (ps *PortScanner) ScanRange(start, end int) []int {
 
 // Host returns the target host of the port scanner.
 func (ps *PortScanner) Host() string {
-	return ps.host
+	return ps.host.String()
 }

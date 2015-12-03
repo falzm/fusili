@@ -75,6 +75,7 @@ func main() {
 		scan      chan hostPort
 		sink      chan hostPort
 		wg        sync.WaitGroup
+		err       error
 	)
 
 	if flagHelp {
@@ -184,7 +185,10 @@ func main() {
 
 	// Scan hosts
 	for host, expectedPorts := range config.Hosts {
-		scanners[host] = portscan.NewPortScanner(host, expectedPorts, flagScanPortTimeout)
+		if scanners[host], err = portscan.NewPortScanner(host, expectedPorts, flagScanPortTimeout); err != nil {
+			logger.Error("core", "unable to resolve address for host %s: %s", host, err)
+			continue
+		}
 
 		for p := startPort; p <= endPort; p++ {
 			scan <- hostPort{host, p}
