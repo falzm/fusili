@@ -1,0 +1,13 @@
+github.com/fatih/color v0.0.0-20151111120202-9aae6aaa2231 h1:SJQOrTKavQKN9enteIYsYLMIk4Qz1bs+ayguw0JqiCY=
+github.com/fatih/color v0.0.0-20151111120202-9aae6aaa2231/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+github.com/mattn/go-colorable v0.0.0-20151110094335-51a7e7a8b166 h1:i2/QkA0+sHjN3MwuTc1ATj3D6GXTQJTy1GaUTzvjN+Q=
+github.com/mattn/go-colorable v0.0.0-20151110094335-51a7e7a8b166/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
+github.com/mattn/go-isatty v0.0.0-20151107153648-d6aaa2f596ae h1:3TAe6iD8inBb1youTna0GopmMDGoJIs34wOPelC7a5M=
+github.com/mattn/go-isatty v0.0.0-20151107153648-d6aaa2f596ae/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
+github.com/mitchellh/goamz v0.0.0-20150317174335-caaaea8b30ee h1:Wp4ixY2/QEZOrQrGMF1h1x4yxqsef+aQPse0XMXzZhs=
+github.com/mitchellh/goamz v0.0.0-20150317174335-caaaea8b30ee/go.mod h1:svb8iUupD5i7RyGXoCUrk3EQSaXjWxKuqiZ0j41Jmm8=
+github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644/go.mod h1:nkxAfR/5quYxwPZhyDxgasBMnRtBZd0FCEpawpjMUFg=
+github.com/vaughan0/go-ini v0.0.0-20130923145212-a98ad7ee00ec h1:DGmKwyZwEB8dI7tbLt/I/gQuP559o/0FrAkHKlQM/Ks=
+github.com/vaughan0/go-ini v0.0.0-20130923145212-a98ad7ee00ec/go.mod h1:owBmyHYMLkxyrugmfwE/DLJyW8Ro9mkphwuVErQ0iUw=
+golang.org/x/sys v0.0.0-20181213200352-4d1cda033e06 h1:0oC8rFnE+74kEmuHZ46F6KHsMr5Gx2gUQPuNz28iQZM=
+golang.org/x/sys v0.0.0-20181213200352-4d1cda033e06/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=

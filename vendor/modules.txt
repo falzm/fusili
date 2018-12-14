@@ -1,0 +1,13 @@
+# github.com/fatih/color v0.0.0-20151111120202-9aae6aaa2231
+github.com/fatih/color
+# github.com/mattn/go-colorable v0.0.0-20151110094335-51a7e7a8b166
+github.com/mattn/go-colorable
+# github.com/mattn/go-isatty v0.0.0-20151107153648-d6aaa2f596ae
+github.com/mattn/go-isatty
+# github.com/mitchellh/goamz v0.0.0-20150317174335-caaaea8b30ee
+github.com/mitchellh/goamz/aws
+github.com/mitchellh/goamz/s3
+# github.com/vaughan0/go-ini v0.0.0-20130923145212-a98ad7ee00ec
+github.com/vaughan0/go-ini
+# golang.org/x/sys v0.0.0-20181213200352-4d1cda033e06
+golang.org/x/sys/unix

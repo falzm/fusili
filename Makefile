@@ -4,10 +4,7 @@ BUILD_DATE := $(shell date +%F)
 all: fusili
 
 fusili:
-	gb build -ldflags " \
+	go build -mod=vendor -ldflags " \
 		-X main.version=$(VERSION) \
 		-X main.buildDate=$(BUILD_DATE) \
-		" fusili/fusili
-
-clean:
-	rm -rf bin/ pkg/
+		" ./cmd/fusili
