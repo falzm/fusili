@@ -2,15 +2,16 @@
 
 *Fusili* is a simple network port scanner. It is not a replacement for Nmap: it only performs TCP port scanning, and doesn't even try to be stealthy.
 
-## Build
+## Installation
 
 Requirements:
 
- * Go compiler (>= 1.3.0)
- * [gb](http://getgb.io/)
+ * Go compiler (>= 1.11.0)
 
-To build *Fusili*, execute `make` at the root of the sources. If no error occurred
-during build, binary is available in the `bin/` directory.
+
+```console
+go get -u github.com/falzm/fusili
+```
 
 ## Configuration
 
